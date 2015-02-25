@@ -4,7 +4,9 @@ import java.util.*;
 
 public class Translater {
     private static final String DICTIONARY_FILE = "dictionary.txt";
+    private static final String CORPUS_FILE = "corpus.txt";
     static HashMap<String, TreeSet<String>> dictionary;
+    static ArrayList<String> corpus;
 
 
     static void loadDictionary(String filename, HashMap<String, TreeSet<String>> dict) {
@@ -27,6 +29,22 @@ public class Translater {
             e.printStackTrace();
             System.exit(1);
         }
+
+    }
+
+    static void loadCorpus(String filename, ArrayList<String> corp) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            while(true) {
+                String line = br.readLine();
+                if(line == null) break;                
+                corp.add(line);
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
     }
 
 
@@ -37,6 +55,12 @@ public class Translater {
         dictionary = new HashMap<String, TreeSet<String>>();
         loadDictionary(DICTIONARY_FILE, dictionary);
         //System.out.println(dictionary.toString());
+
+        // read in corpus
+        corpus = new ArrayList<String>();
+        loadCorpus(CORPUS_FILE, corpus);
+        System.out.println(corpus.toString());
+
 
         
     }
