@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Translater {
     private static final String DICTIONARY_FILE = "dictionary.txt";
-    static HashMap<String, ArrayList<String>> dictionary;
+    static HashMap<String, TreeSet<String>> dictionary;
 
 
-    static void loadDictionary(String filename, HashMap<String, ArrayList<String>> dict) {
+    static void loadDictionary(String filename, HashMap<String, TreeSet<String>> dict) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(filename));
             while(true) {
@@ -18,7 +18,7 @@ public class Translater {
                     String chineseWord = components[0].trim();
                     String englishTranslation = components[1].trim();
                     if(!dict.containsKey(chineseWord)) {
-                        dict.put(chineseWord, new ArrayList<String>());
+                        dict.put(chineseWord, new TreeSet<String>());
                     }
                     dict.get(chineseWord).add(englishTranslation);
                 }
@@ -34,9 +34,9 @@ public class Translater {
         System.out.println("Hello team!");
 
         // read in dictionary
-        dictionary = new HashMap<String, ArrayList<String>>();
+        dictionary = new HashMap<String, TreeSet<String>>();
         loadDictionary(DICTIONARY_FILE, dictionary);
-        // System.out.println(dictionary.toString());
+        //System.out.println(dictionary.toString());
 
         
     }
