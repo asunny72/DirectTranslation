@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Translater {
     private static final String DICTIONARY_FILE = "dictionary.txt";
-    private static final String CORPUS_FILE = "corpus.txt";
+    private static final String CORPUS_FILE = "corpusSegmented.txt";
     static HashMap<String, TreeSet<String>> dictionary;
     static ArrayList<String> corpus;
 
@@ -59,9 +59,20 @@ public class Translater {
         // read in corpus
         corpus = new ArrayList<String>();
         loadCorpus(CORPUS_FILE, corpus);
-        System.out.println(corpus.toString());
+        //System.out.println(corpus.toString());
 
-
+        for(String sentence : corpus) {
+            String[] tokens = sentence.split(" ");
+            for(int i = 0; i < tokens.length; i++) {
+                if(dictionary.containsKey(tokens[i])) {
+                    System.out.print(dictionary.get(tokens[i]).first());
+                } else {
+                    System.out.print(tokens[i]);
+                }
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
         
     }
 }
