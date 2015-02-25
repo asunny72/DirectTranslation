@@ -24,6 +24,22 @@
 就是 ; just like 
 就是 ; very 
 就是 ; in the same way 
+就 ; on
+就 ; concerning
+就 ; approach
+就 ; enter
+就 ; move towards
+就 ; undertake
+就 ; as early as
+就 ; as soon as
+就 ; that
+就 ; already
+就 ; at once
+就 ; right away
+就 ; only
+就 ; with regard
+就 ; right off
+就 ; then
 過年 ; New Year
 四 ; four
 大 ; large
@@ -815,4 +831,46 @@
 考虑 ; consideration
 更换 ; replace
 更换 ; change
+幫口 ; help mouth
+決策者 ; makers
+高管 ; executives
+來说 ; speaking
+人民 ; commonwealth
+人民 ; people
+幣 ; currency
+幣 ; money
+越 ; more
+越 ; climb
+越 ; exceed
+越 ; surpass
+令 ; make
+令 ; cause
+令 ; order
+令 ; decree
+令 ; command
+令 ; season
+令 ; your
+不加 ; without
+总是 ; always
+不透 ; impervious
+做好 ; good
+快来 ; come
+吃吧 ; eat
+今天 ; today
+今天 ; now
+今天 ; at the present day
+今天 ; specifically
+几号 ; what day of month
+几号 ; a few numbers
+回来 ; come back
+回来 ; return
+等一会儿 ; wait a minute
+很多 ; a lot of
+几千 ; several thousand
+回家 ; come back home
+而言 ; terms
+几日 ; a few days
+谈起 ; talk
+谈起 ; intimate
+谈起 ; notice
 
