@@ -5,6 +5,7 @@ import java.util.*;
 public class Translater {
     private static final String DICTIONARY_FILE = "dictionary.txt";
     private static final String CORPUS_FILE = "corpusSegmented.txt";
+    private static final String TAGGED_CORPUS_FILE = "corpusTagged.txt";
     static HashMap<String, TreeSet<String>> dictionary;
     static ArrayList<String> corpus;
 
