@@ -203,9 +203,30 @@ public class Translater {
         return newSentence;
     }
 
+    static String removeParticles(String taggedSentence) {
+        String[] tokens = taggedSentence.split(" ");
+        String newSentence = "";
+        for(int i = 0; i < tokens.length; i++) {
+            String word = getUntaggedChinese(tokens[i]);
+            // from http://en.wikipedia.org/wiki/Sentence-final_particle#Mandarin
+            if(word.equals("了") || word.equals("呢") || word.equals("吧") || 
+               word.equals("哦") || word.equals("啊") || word.equals("啦") ||
+               word.equals("呀") || word.equals("吗")) {
+                continue;
+            }
+            newSentence += tokens[i];
+            if(i < tokens.length - 1) {
+                newSentence += " ";
+            }
+        }
+        return newSentence;
+    }
+
+
     static void printTranslation() {
         for(String sentence : corpus) {
             sentence = removeMeasureWords(sentence);
+            sentence = removeParticles(sentence);
             String[] tokens = sentence.split(" ");
             for(int i = 0; i < tokens.length; i++) {
                 String word = getUntaggedChinese(tokens[i]);
