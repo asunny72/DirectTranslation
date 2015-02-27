@@ -121,6 +121,20 @@ public class Translater {
         return mostFrequent;
     }
 
+    static void printBaseline() {
+        for(String sentence : corpus) {
+            String[] tokens = sentence.split(" ");
+            for(int i = 0; i < tokens.length; i++) {
+                if(dictionary.containsKey(tokens[i])) {
+                    System.out.print(dictionary.get(tokens[i]).first());
+                } else {
+                    System.out.print(tokens[i]);
+                }
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
 
 
     public static void main(String[] args) {
