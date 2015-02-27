@@ -136,6 +136,50 @@ public class Translater {
         }
     }
 
+    static String getChineseTag(String taggedWord) {
+        String[] parts = taggedWord.trim().split("#");
+        return parts[1];
+    }
+
+    static String getUntaggedChinese(String taggedWord) {
+        String[] parts = taggedWord.trim().split("#");
+        return parts[0];
+    }
+
+    static String removeMeasureWords(String taggedSentence) {
+        String[] tokens = taggedSentence.split(" ");
+        String newSentence = "";
+        for(int i = 0; i < tokens.length; i++) {
+            String token = tokens[i];
+            String word = getUntaggedChinese(tokens[i]);
+            if(getChineseTag(token).equals("M") && !word.equals("元") && !word.equals("周") && !word.equals("年")) {
+                continue;
+            }
+            newSentence += token;
+            if(i < tokens.length - 1) {
+                newSentence += " ";
+            }
+        }
+        return newSentence;
+    }
+
+    static void printTranslation() {
+        for(String sentence : corpus) {
+            sentence = removeMeasureWords(sentence);
+            String[] tokens = sentence.split(" ");
+            for(int i = 0; i < tokens.length; i++) {
+                String word = getUntaggedChinese(tokens[i]);
+                if(dictionary.containsKey(word)) {
+                    String translation = getMostFrequentTranslation(dictionary.get(word));
+                    System.out.print(translation);
+                } else {
+                    System.out.print(word);
+                }
+                System.out.print(" ");
+            }
+            System.out.println();
+        }        
+    }
 
     public static void main(String[] args) {
         System.out.println("Hello team!");
@@ -147,13 +191,16 @@ public class Translater {
 
         // read in corpus
         corpus = new ArrayList<String>();
-        loadCorpus(CORPUS_FILE, corpus);
+        loadCorpus(TAGGED_CORPUS_FILE, corpus);
         //System.out.println(corpus.toString());
 
         // read in frequency map
         englishFrequencies = new HashMap<String, Long>();
         loadFrequencies(ENGLISH_FREQ_FILE, englishFrequencies);
+        
 
+        printTranslation();
+        /*
         for(String sentence : corpus) {
             String[] tokens = sentence.split(" ");
             for(int i = 0; i < tokens.length; i++) {
@@ -167,6 +214,7 @@ public class Translater {
             }
             System.out.println();
         }
+        */
         
     }
 }
