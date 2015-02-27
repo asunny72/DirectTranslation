@@ -91,13 +91,13 @@ public class Translater {
     static long getTranslationFrequency(String translation) {
         long wordFrequency = -1;
         // if translation has more than one word, make its
-        // frequency the largest one
+        // frequency the smallest one
         String[] words = translation.split(" ");
         for(int i = 0; i < words.length; i++) {
             String currentWord = words[i].toLowerCase();
             if(englishFrequencies.containsKey(currentWord)) {
                 long currFrequency = englishFrequencies.get(currentWord);
-                if(wordFrequency < currFrequency) {
+                if(wordFrequency == -1 || wordFrequency > currFrequency) {
                     wordFrequency = currFrequency;
                 }
             } else {
