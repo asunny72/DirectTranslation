@@ -7,10 +7,12 @@ public class Translater {
     private static final String CORPUS_FILE = "corpusSegmented.txt";
     private static final String TAGGED_CORPUS_FILE = "corpusTagged.txt";
     private static final String ENGLISH_FREQ_FILE = "count_1w.txt";
+    private static final String ENG_WORDS = "engWords.txt";
+    private static final String ENG_WORD_POS_FILE = "engWordPOS.txt";
     static HashMap<String, TreeSet<String>> dictionary;
     static HashMap<String, Long> englishFrequencies;
     static ArrayList<String> corpus;
-
+    static HashMap<String, String> englishWordPOS;
 
     static void loadDictionary(String filename, HashMap<String, TreeSet<String>> dict) {
         try {
@@ -52,6 +54,44 @@ public class Translater {
 
     }
 
+    static void loadEngWordPOSTagger(String filename, HashMap<String, TreeSet<String>> dict, HashMap<String, String> engWordPOS ){
+        TreeSet<String> words = new TreeSet<String>();
+        for(TreeSet<String> engWordSet : dict.values()){
+            // System.out.println(engWordSet.toString());
+            for(String word : engWordSet) words.add(word);
+        }
+        // try {
+        //     BufferedWriter bw = new BufferedWriter(new FileWriter(filename));
+        //     for(String word : words) {
+        //         bw.write(word);
+        //         bw.newLine();
+        //     }
+        //     bw.close();
+        // } catch(IOException e) {
+        //     e.printStackTrace();
+        //     System.exit(1);
+        // }
+        String tagged = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            while(true) {
+                String line = br.readLine();
+                if(line == null) break; 
+                tagged = line;               
+            }
+            br.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        String[] tokens = tagged.split(" ");
+        for(int i = 0; i < tokens.length; i++){
+            String[] wordToTag = tokens[i].split("_");
+            if (wordToTag.length == 2) englishWordPOS.put(wordToTag[0], wordToTag[1]);
+        }
+        System.out.println(englishWordPOS.toString());
+    }
 
     static void loadFrequencies(String filename, HashMap<String, Long> map) {
         try {
@@ -198,6 +238,9 @@ public class Translater {
         englishFrequencies = new HashMap<String, Long>();
         loadFrequencies(ENGLISH_FREQ_FILE, englishFrequencies);
         
+        //
+        englishWordPOS = new HashMap<String, String>();
+        loadEngWordPOSTagger(ENG_WORD_POS_FILE, dictionary, englishWordPOS);
 
         printTranslation();
         /*
@@ -215,6 +258,6 @@ public class Translater {
             System.out.println();
         }
         */
-        
+        System.out.println(englishWordPOS.toString());
     }
 }
