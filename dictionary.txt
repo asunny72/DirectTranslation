@@ -300,7 +300,11 @@
 我 ; I
 想 ; think
 想 ; want
-把 ; th
+把 ; grasp
+把 ; guard
+把 ; hold
+把 ; watch
+把 ; handle
 美元 ; us dollars
 人民币 ; renminbi
 换 ; change
