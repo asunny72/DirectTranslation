@@ -41,20 +41,6 @@
 就 ; right off
 就 ; then
 過年 ; New Year
-四 ; four
-大 ; large
-大 ; big
-大 ; great
-大 ; heavy
-大 ; major
-大 ; bigger
-大 ; coarse
-大 ; considerable
-大 ; huge
-大 ; oldest
-大 ; out
-大 ; strong
-大 ; wide
 幫 ; help
 幫 ; aid
 幫 ; assist
@@ -80,19 +66,6 @@
 口 ; os
 口 ; Measure word in Chinese 
 口 ; spoken
-特色 ; characteristic 
-特色 ; characteristical 
-特色 ; distinguishing feature 
-美食 ; food
-各 ; each
-各 ; apiece
-顯 ; obvious 
-顯 ; apparent 
-顯 ; illustrious 
-顯 ; noticeable
-顯 ; appear 
-顯 ; show
-神通 ; supernatural 
 對於 ; for
 對於 ; about
 對於 ; in regard to 
@@ -831,7 +804,6 @@
 考虑 ; consideration
 更换 ; replace
 更换 ; change
-幫口 ; help mouth
 決策者 ; makers
 高管 ; executives
 來说 ; speaking
@@ -873,4 +845,38 @@
 谈起 ; talk
 谈起 ; intimate
 谈起 ; notice
-
+我们 ; we
+我们 ; us
+我们 ; ourselves
+中午 ; noon
+中午 ; midday 
+中午 ; noonday
+去 ; go
+去 ; leave
+去 ; remove 
+那 ; that
+那 ; those
+那 ; how 
+餐馆 ; restaurant 
+点 ; point
+点 ; spot
+点 ; dot
+点 ; aspect 
+点 ; drip 
+点 ; drop 
+点 ; feature
+点 ; place
+点 ; speck 
+点 ; appointed time
+点 ; burn 
+点 ; hint
+点 ; kindle 
+点 ; light 
+点 ; select
+点 ; skim
+点 ; sow in holes
+点 ; touch on very briefly 
+东西 ; thing
+东西 ; stuff
+东西 ; east and west 
+吧 ; okay
