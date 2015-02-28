@@ -223,7 +223,7 @@ public class Translater {
     }
 
     static String reorderAndUntag(String taggedSentence){
-        System.out.println(taggedSentence);
+        //System.out.println(taggedSentence);
         String[] tokens = taggedSentence.split(" ");
         String[] untaggedWords = new String[tokens.length];
         String[] tags = new String[tokens.length];
@@ -236,7 +236,7 @@ public class Translater {
         String prevTag = "";
         String prevWord = "";
         for(int i = 0; i < tags.length; i++){
-            if (prevTag.equals("VV") && tags[i].equals("VV")) untaggedWords[i] = "to " + untaggedWords[i];
+            //if (prevTag.equals("VV") && tags[i].equals("VV")) untaggedWords[i] = "to " + untaggedWords[i];
             if (prevTag.equals("PN") && tags[i].equals("NT")) {
                 String tempTag = tags[i];
                 String tempWord = untaggedWords[i];
