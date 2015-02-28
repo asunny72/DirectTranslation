@@ -90,7 +90,7 @@ public class Translater {
             String[] wordToTag = tokens[i].split("_");
             if (wordToTag.length == 2) englishWordPOS.put(wordToTag[0], wordToTag[1]);
         }
-        System.out.println(englishWordPOS.toString());
+        // System.out.println(englishWordPOS.toString());
     }
 
     static void loadFrequencies(String filename, HashMap<String, Long> map) {
