@@ -222,14 +222,60 @@ public class Translater {
         return newSentence;
     }
 
+    static String reorderAndUntag(String taggedSentence){
+        System.out.println(taggedSentence);
+        String[] tokens = taggedSentence.split(" ");
+        String[] untaggedWords = new String[tokens.length];
+        String[] tags = new String[tokens.length];
+        for(int i = 0; i < tokens.length; i++) {
+            String[] wordToTag = tokens[i].split("#");
+            untaggedWords[i] = wordToTag[0];
+            tags[i] = wordToTag[1];
+        }
 
+        String prevTag = "";
+        String prevWord = "";
+        for(int i = 0; i < tags.length; i++){
+            if (prevTag.equals("VV") && tags[i].equals("VV")) untaggedWords[i] = "to " + untaggedWords[i];
+            if (prevTag.equals("PN") && tags[i].equals("NT")) {
+                String tempTag = tags[i];
+                String tempWord = untaggedWords[i];
+                tags[i] = tags[i-1];
+                untaggedWords[i] = untaggedWords[i-1];
+                tags[i-1] = tempTag;
+                untaggedWords[i-1] = "At " + tempWord;
+            }
+            
+            prevTag = tags[i];
+            prevWord = untaggedWords[i];
+        }
+
+        for(int i = 1; i < untaggedWords.length - 1; i++){
+            if(untaggedWords[i].equals("的")) {
+                untaggedWords[i] = untaggedWords[i-1];
+                tags[i] = tags[i-1];
+                untaggedWords[i-1] = untaggedWords[i+1];
+                tags[i-1] = tags[i+1];
+                untaggedWords[i+1] = "";
+                tags[i+1] = "";
+            }  
+        }
+        String result = "";
+        for(int i = 0; i < tags.length; i++){
+            if (untaggedWords[i].equals("不") && untaggedWords[i-1].equals(untaggedWords[i+1])) i+=2;
+            result += " " + untaggedWords[i];
+        }
+        // System.out.println(result);
+        return result;
+    }
     static void printTranslation() {
         for(String sentence : corpus) {
             sentence = removeMeasureWords(sentence);
             sentence = removeParticles(sentence);
+            sentence = reorderAndUntag(sentence);
             String[] tokens = sentence.split(" ");
             for(int i = 0; i < tokens.length; i++) {
-                String word = getUntaggedChinese(tokens[i]);
+                String word = tokens[i];//getUntaggedChinese(tokens[i]);
                 if(dictionary.containsKey(word)) {
                     String translation = getMostFrequentTranslation(dictionary.get(word));
                     System.out.print(translation);
@@ -279,6 +325,6 @@ public class Translater {
             System.out.println();
         }
         */
-        System.out.println(englishWordPOS.toString());
+        
     }
 }
